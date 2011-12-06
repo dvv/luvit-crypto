@@ -1,17 +1,31 @@
 #VERSION := 0.1.1
 VERSION := master
 
-all: crypto
+all: module
 
-crypto: build/lua-openssl/openssl.so
+OS ?= $(shell uname)
+ifeq ($(OS),Darwin)
+SOEXT := dylib
+else ifeq ($(OS),Windows)
+SOEXT := dll
+else
+LDFLAGS += -luuid -lrt -lpthread
+SOEXT := so
+endif
 
-build/lua-openssl/openssl.so: build/lua-openssl
+module: build/lua-openssl/openssl.luvit
+
+build/lua-openssl/openssl.luvit: build/lua-openssl
 	make INCS=-I$(LUA_DIR) -C $^
+	mv build/lua-openssl/openssl.$(SOEXT) $@
 
 build/lua-openssl:
 	mkdir -p build
-	wget http://github.com/zhaozg/lua-openssl/tarball/$(VERSION) -O - | tar -xzpf - -C build
+	wget -qct3 --no-check-certificate https://github.com/zhaozg/lua-openssl/tarball/$(VERSION) -O - | tar -xzpf - -C build
 	mv build/zhaozg-lua-* $@
 
-.PHONY: all crypto
+clean:
+	rm -fr build
+
+.PHONY: all module clean
 .SILENT:
