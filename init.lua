@@ -33,6 +33,7 @@ local function digest(method, salt, data, raw)
   digest:update(data)
   local result = digest:final()
   if not raw then result = tohex(result) end
+  digest:cleanup()
   return result
 end
 
