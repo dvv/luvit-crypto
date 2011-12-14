@@ -9,7 +9,7 @@ SOEXT := dylib
 else ifeq ($(OS),Windows)
 SOEXT := dll
 else
-LDFLAGS += -luuid -lrt -lpthread
+LDFLAGS += -luuid -lrt -lpthread -ldl
 SOEXT := so
 endif
 
