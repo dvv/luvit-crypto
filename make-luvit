@@ -1,0 +1,11 @@
+#!/bin/sh
+OSARCH=`uname -sm`
+
+[ -z "${LUA_DIR}" ] && \
+LUA_DIR=/Users/pancake/prg/luvit/luvit/deps/luajit/src/
+
+if [ "${OSARCH}" = "Darwin i386" ]; then
+	LIB_OPTION="-bundle -undefined dynamic_lookup"
+	CC="gcc -arch i386"
+fi
+make CC="${CC}" LUA_DIR=${LUA_DIR} LIB_OPTION="${LIB_OPTION}" $@

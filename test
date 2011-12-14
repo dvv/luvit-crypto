@@ -1,5 +1,0 @@
-#!/usr/bin/env luvit
-
-local Crypto = require('./')
-assert(not _G.openssl)
-assert(Crypto.get_cipher)
