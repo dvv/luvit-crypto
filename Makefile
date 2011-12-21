@@ -1,7 +1,14 @@
 #VERSION := 0.1.1
 VERSION := master
 
+ROOT    := $(shell pwd)
+PATH    := $(ROOT)/.luvit:$(PATH)
+
 all: module
+
+test: module
+	#luvit test
+	./test
 
 OS ?= $(shell uname)
 ifeq ($(OS),Darwin)
@@ -16,7 +23,7 @@ endif
 module: build/lua-openssl/openssl.luvit
 
 build/lua-openssl/openssl.luvit: build/lua-openssl
-	make INCS=-I$(shell pwd)/.luvit -C $^
+	make INCS=-I/$(ROOT)/.luvit -C $^
 	mv build/lua-openssl/openssl.$(SOEXT) $@
 
 build/lua-openssl:
@@ -28,4 +35,4 @@ clean:
 	rm -fr build
 
 .PHONY: all module clean
-#.SILENT:
+.SILENT:
