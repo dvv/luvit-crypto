@@ -23,7 +23,7 @@ endif
 module: build/lua-openssl/openssl.luvit
 
 build/lua-openssl/openssl.luvit: build/lua-openssl
-	make INCS=-I/$(ROOT)/.luvit -C $^
+	make INCS="`luvit-config --cflags | sed 's/ -Werror / /'`" -C $^
 	mv build/lua-openssl/openssl.$(SOEXT) $@
 
 build/lua-openssl:
@@ -35,4 +35,4 @@ clean:
 	rm -fr build
 
 .PHONY: all module clean
-.SILENT:
+#.SILENT:

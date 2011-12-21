@@ -1,6 +1,8 @@
 Crypto API for [Luvit](https://github.com/luvit/luvit)
 ====
 
+[![Build Status](https://secure.travis-ci.org/luvit/crypto.png)](http://travis-ci.org/luvit/crypto)
+
 A simple wrapper exposing OpenSSL interface.
 
 Example
@@ -16,4 +18,4 @@ See [test](test) for more.
 License
 -------
 
-Check [here](license.txt).
+[MIT](crypto/license.txt)
