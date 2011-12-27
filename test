@@ -2,8 +2,6 @@
 
 local Crypto = require('./')
 
-if false then
-
 -- sanity --
 assert(not _G.openssl)
 assert(Crypto.get_cipher)
@@ -44,4 +42,3 @@ assert(s ~= enc_s)
 
 --
 print('TEST OK')
-end
