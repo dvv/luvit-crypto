@@ -23,9 +23,9 @@ modules/crypto/openssl.luvit: build/lua-openssl/openssl.luvit
 	cp build/lua-openssl/openssl.luvit $@
 
 build/lua-openssl/openssl.luvit: build/lua-openssl
-	mv build/lua-openssl/makefile build/lua-openssl/makefile.orig
+	-mv build/lua-openssl/makefile build/lua-openssl/makefile.orig
 	sed -e 's,\.so,\.${SOEXT},g' -e 's,-l.*$$,,' build/lua-openssl/makefile.orig > build/lua-openssl/Makefile
-	make CC="${CC}" INCS=-I$(LUA_DIR) LIB_OPTION="$(LIB_OPTION) ${LDFLAGS} $(OPENSSL_LIBS)" -C $^
+	make CC="${CC}" INCS="-fPIC -I$(LUA_DIR)" LIB_OPTION="-fPIC $(LIB_OPTION) ${LDFLAGS} $(OPENSSL_LIBS)" -C $^
 	mv build/lua-openssl/openssl.$(SOEXT) $@
 
 build/lua-openssl:
