@@ -50,7 +50,7 @@ Crypto.sha1 = function(data, raw)
 end
 
 Crypto.sign = function(secret, data)
-  return digest('sha1', secret, data, true)
+  return digest('sha1', secret, data)
 end
 
 Crypto.encrypt = function(secret, data, raw)
