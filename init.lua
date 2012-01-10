@@ -1,5 +1,4 @@
-require './build/lua-openssl/openssl'
-local Crypto = openssl
+local Crypto = require('./build/lua-openssl/openssl')
 _G.openssl = nil
 
 --

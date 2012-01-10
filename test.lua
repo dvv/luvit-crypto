@@ -3,6 +3,7 @@
 local Crypto = require('./')
 
 -- sanity --
+assert(Crypto)
 assert(not _G.openssl)
 assert(Crypto.get_cipher)
 
