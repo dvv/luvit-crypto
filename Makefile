@@ -38,4 +38,4 @@ clean:
 	rm -fr build
 
 .PHONY: all module clean
-#.SILENT:
+.SILENT:

@@ -13,7 +13,7 @@ Example
     print('SHA1', 'Привет, Мир!', sha1)
     assert(sha1 == 'd67f91f1f55b432342ec2392bf1110c86291fdd3')
 
-See [test](test) for more.
+See [test](crypto/test.lua) for more.
 
 License
 -------
