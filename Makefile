@@ -37,4 +37,4 @@ test: module
 	checkit ./tests/*
 
 .PHONY: all module clean
-#.SILENT:
+.SILENT:
