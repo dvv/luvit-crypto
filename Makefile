@@ -6,10 +6,6 @@ PATH    := $(ROOT)/.luvit:$(PATH)
 
 all: module
 
-test: module
-	#luvit test
-	./test
-
 OS ?= $(shell uname)
 ifeq ($(OS),Darwin)
 SOEXT := dylib
@@ -36,6 +32,9 @@ build/lua-openssl:
 
 clean:
 	rm -fr build
+
+test: module
+	checkit ./tests/*
 
 .PHONY: all module clean
 #.SILENT:
