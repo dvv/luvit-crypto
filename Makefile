@@ -1,9 +1,6 @@
 #VERSION := 0.1.1
 VERSION := master
 
-ROOT    := $(shell pwd)
-PATH    := $(ROOT)/.luvit:$(PATH)
-
 all: module
 
 OS ?= $(shell uname)
@@ -16,11 +13,10 @@ LDFLAGS += -luuid -lrt -lpthread -ldl
 SOEXT := so
 endif
 
-
 module: build/lua-openssl/openssl.luvit
 
 build/lua-openssl/openssl.luvit: build/lua-openssl
-	make INCS="`luvit-config --cflags | sed 's/ -Werror / /'`" -C $^
+	make INCS="`luvit --cflags | sed 's/ -Werror / /'`" -C $^
 	mv build/lua-openssl/openssl.$(SOEXT) $@
 
 build/lua-openssl:
