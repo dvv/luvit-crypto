@@ -1,7 +1,9 @@
 Crypto API for [Luvit](https://github.com/luvit/luvit)
 ====
 
-[![Build Status](https://secure.travis-ci.org/dvv/luvit-crypto.png)](http://travis-ci.org/dvv/luvit-crypto)
+
+**CLOSED**: luvit has got native crypto support.
+
 
 A simple wrapper exposing OpenSSL interface via [Lua-OpenSSL](https://github.com/zhaozg/lua-openssl).
 
